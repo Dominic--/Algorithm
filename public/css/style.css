@@ -1,0 +1,49 @@
+body {
+    font: 14px Microsoft Yahei, Georgia, serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.content {
+    height: 2000px;
+    margin: 30px 70px;
+}
+
+
+.orange {
+    background-color: rgba(255, 140, 0, 0.2);
+}
+
+.cyan {
+    background-color: rgba(0, 255, 255, 0.2);
+}
+
+.green {
+    background-color: rgba(124, 252, 0, 0.2);
+}
+
+.array {
+    padding: 20px 40px;
+    border-collapse: collapse;
+}
+
+#my-affix li {
+    margin: 10px 0px;
+}
+
+.array-ele {
+   border: 1px solid black;
+   display: table-cell;
+   padding: 15px 20px;
+}
+
+
+#scrollUp {
+	bottom: 20px;
+	right: 20px;
+	height: 48px; 
+	width: 48px; 
+	background: url(../img/top.png) no-repeat;
+}

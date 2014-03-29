@@ -1,0 +1,65 @@
+<%- include header %>
+
+<link type="text/css" rel="stylesheet" href="css/syntax.css"></link>
+<script language="javascript" src="js/syntax.js"></script>
+<script language="javascript" src="js/graph.js"></script>
+<script language="javascript">
+    $(function() {
+        dp.SyntaxHighlighter.ClipboardSwf = 'flash/clipboard.swf';
+        dp.SyntaxHighlighter.HighlightAll('code');
+
+        init_array();
+
+        init_affix();
+    });
+</script>
+
+<div class="content bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+            <div class="bs-docs-section">
+            <h3 id="3">333333333</h3>
+            <pre name="code" class="cpp">
+                #include &lt;iostream&gt;
+                
+                int main(){
+                    return 0
+                }
+            </pre>
+
+            <pre name="array">
+                1,C2,G3,4,5,6,7,8
+            </pre>
+
+            <pre name="array">
+                1,C2,G3,4,5,6,7
+            </pre>
+
+            <h3 id="5">5555555</h3>
+            <pre name="array">
+                 1,C2,G3,4,5,6
+            </pre>
+
+            <h3 id="6">6666666</h3>
+            <pre name="array">
+                 1,C2,G3,O4,5
+            </pre>
+
+            <h3 id="7">777777777</h3>
+            <pre name="array">
+                 1,C2,G3,O4
+            </pre>
+
+            <h3 id="8">88888888888</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="bs-docs-sidebar hidden-print" role="complementary">
+                <ul class="nav bs-docs-sidenav" id="my-affix"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include footer %>
