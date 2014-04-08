@@ -1,0 +1,10 @@
+<%- include header %>
+<div class="content">
+    <a href="/login">Login</a>, <a href="/logout">Logout</a><br />
+    添加新算法: <a class="btn" href="/add">添加</a><br />
+    <h3>算法列表:</h3>
+    <% algorithms.forEach(function(a) { %>
+        <a href="/algorithm/<%= a.url %>">《<%= a.name %>》</a>: <a href="/edit/<%= a.url %>">编辑</a>, <a href="/remove/<%= a.url %>">删除</a><br />
+    <% }); %>
+</div>
+<%- include footer %>

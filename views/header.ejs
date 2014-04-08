@@ -2,22 +2,22 @@
 <html lang="en">
     <head>
         <title>Algorithm.CC</title>
-        <meta name="Keywords" content="Algorithm, 算法"></meta>
-        <meta name="Description" content="包罗最全的计算机算法知识，从数据结构基础开始、介绍常用算法、深入理解。">
+        <meta name="Keywords" content="<%= doc.keyword %>">
+        <meta name="Description" content="<%= doc.description %>">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
 
-        <script src="js/jquery-1.11.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/algorithm.js"></script>
+        <script src="/js/jquery-1.11.0.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/algorithm.js"></script>
         <script type="text/javascript">
             $(function () {
                     $("body").css("background",get_random_background);
-                    $(".navbar-default").css("background-color", get_random_nav);
+                    $(".navbar").css("background-color", get_random_nav);
 
                     $.scrollUp({
                         scrollText: '',
@@ -37,11 +37,14 @@
                     <ul class="nav navbar-nav">
                         <li><a href="mailto:henglin1991@gmail.com">提意见</a></li>
                     </ul>
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search Algorithm...">
-                    </div>
-                </form>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+                    <form class="navbar-form navbar-right">
+                        <div class="input-group cpt-width-300">
+                            <input type="text" class="form-control" placeholder="Search Algorithm...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </form>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>

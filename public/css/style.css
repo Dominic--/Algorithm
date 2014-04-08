@@ -24,6 +24,26 @@ a {
     background-color: rgba(124, 252, 0, 0.2);
 }
 
+.cpt-width-300 {
+    width: 300px;
+}
+
+.cpt-width-400 {
+    width: 400px;
+}
+
+.cpt-width-900 {
+    width: 900px;
+}
+
+.cpt-form input {
+    margin: 10px;
+}
+
+.cpt-form input.cpt-bottom {
+    margin-bottom: 100px;
+}
+
 .array {
     padding: 20px 40px;
     border-collapse: collapse;
@@ -32,6 +52,7 @@ a {
 #my-affix li {
     margin: 10px 0px;
 }
+
 
 .array-ele {
    border: 1px solid black;

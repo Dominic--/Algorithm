@@ -1,32 +1,47 @@
+var monk = require('monk');
+var db = monk('localhost:27017/cpt');
+var doc = {"keyword" : "Algorithm, 算法", "description" : "包罗最全的计算机算法知识，从数据结构基础开始、介绍常用算法、深入理解。"};
+
 exports.index = function(req, res){
-  res.render('index');
+  res.render('index', {'doc' : doc});
 };
 
-exports.test = function(req, res){
-  res.render('test');
+exports.auth = function(req, res, next) {
+    if (req.session.login == 'cpt'){
+        next();
+    } else {
+        res.redirect('/login');
+    }
 };
 
-exports.newuser = function(req, res){
-  res.render('newuser');
+exports.login = function(req, res) {
+    var post = req.body;
+    if (post.name == 'cpt' && post.password == 'cpt'){
+        //console.log(req.session);
+        req.session.login = 'cpt';
+        res.redirect('/admin');
+    } else {
+        res.render('login', {'doc' : doc});
+    }
 };
 
-exports.add = function(db) {
-    return function(req, res){
-        var userName = req.body.username;
-        var userEmail = req.body.useremail;
-
-        var collection = db.get('usercollection');
-        
-        collection.insert({
-            "username" : userName,
-            "email" : userEmail
-        },function (err, doc) {
-            if (err) {
-                res.send("Error");
-            } else {
-                res.location("db");
-                res.redirect("db");
-            }
-        });
-    };
+exports.logout = function(req, res) {
+    delete req.session.login;
+    res.redirect('/');
 };
+
+exports.overview = function(req, res) {
+    var col = db.get('algorithm');
+
+    col.find({}, {}, function(e, algorithms) {
+        res.render('overview', {'algorithms' : algorithms, 'doc' : doc});
+    });
+}
+
+exports.admin = function(req, res) {
+    var col = db.get('algorithm');
+
+    col.find({}, {}, function(e, algorithms) {
+        res.render('admin', {'algorithms' : algorithms, 'doc' : doc});
+    });
+}

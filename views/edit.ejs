@@ -1,0 +1,39 @@
+<%- include header %>
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.min.css" />
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.min.js"></script>
+
+<link rel="stylesheet" href="/css/summernote.css">
+<script language="javascript" src="/js/summernote.min.js"></script>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+
+<script language="javascript">
+    $(function () {
+        $('#summernote').summernote({
+            height: 700,
+            codemirror: {theme: 'monokai'},
+            toolbar: [
+                ['codeview', ['codeview']],
+                ['help', ['help']],
+            ]
+        });
+    });
+</script>
+
+<div>
+    <form method="post" action="/edit/<%= doc.url %>" class="cpt-form">
+        <textarea id="summernote" name="content"><%- doc.content %></textarea>
+        <input type="text" placeholder="Alogrithm Name" name="name" class="form-control cpt-width-400" value="<%= doc.name %>"/>
+        <input type="text" placeholder="Alogrithm URL" name="url" class="form-control cpt-width-400" value="<%= doc.url %>"/>
+        <input type="text" placeholder="Algorithm Keywords" name="keyword" class="form-control cpt-width-400" value="<%= doc.keyword %>"/>
+        <input type="text" placeholder="Alogrithm Descriptions" name="description" class="form-control cpt-width-900" value="<%= doc.description %>"/>
+        <input type="text" name="_id" style="display:none" value="<%= doc._id %>"/>
+        <input type="submit" value="Submit" class="btn cpt-bottom"/>
+    </form>
+</div>
+
+<%- include footer %>

@@ -1,15 +1,27 @@
 var site = require('./controllers/site');
 var algorithm = require('./controllers/algorithm');
 
-
-module.exports = function (app, db) {
+module.exports = function (app) {
 	// Site
     app.get('/', site.index);
-    app.get('/new', site.newuser);
+    app.get('/overview', site.overview);
+    app.get('/admin', site.auth, site.admin);
 
-    app.post('/adduser', site.add(db));
+    app.get('/login', site.login);
+    app.get('/logout', site.logout);
+
+    app.post('/login', site.login);
 
     // Algorithm
-    app.get('/bubble_sort', algorithm.bubble_sort(db));
 
-}
+    // Guest will view the webpage by this way
+    app.get('/algorithm/:url?', algorithm.view);
+
+    // Admin Enterance
+    app.get('/add', site.auth, algorithm.add);
+    app.get('/edit/:url?', site.auth, algorithm.edit);
+    app.get('/remove/:url?', site.auth, algorithm.remove);
+
+    app.post('/add', site.auth, algorithm.add);
+    app.post('/edit/:url?', site.auth, algorithm.edit);
+};

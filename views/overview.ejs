@@ -1,0 +1,8 @@
+<%- include header %>
+<div class="content">
+    <h3>算法列表:</h3>
+    <% algorithms.forEach(function(a) {%>
+        <a href="/algorithm/<%= a.url %>">《<%= a.name %>》</a><br />
+    <% }); %>
+</div>
+<%- include footer %>
