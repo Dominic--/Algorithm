@@ -16,7 +16,7 @@ function get_random_background()
 
 function get_random_nav()
 {
-    var list = ['aliceblue', 'azure', 'black', 'honeydew', 'paleturquoise', 'palevioletred', 'plum'];
+    var list = ['aliceblue', 'azure', 'honeydew', 'paleturquoise', 'palevioletred', 'plum'];
     var random = Math.floor(Math.random() * list.length);
 
     return list[random];
@@ -29,7 +29,7 @@ function init_affix()
 
     var hs = document.getElementsByTagName("h3");
     for (var i = 0; i < hs.length; i++) {
-        if (i == 0)
+        if (i === 0)
             innerHtml += ('<li class="active"><a href="#' + hs[i].id + '">' + hs[i].innerHTML.replace(/<[^>]*>/g, "") + '</a></li>');
         else
             innerHtml += ('<li><a href="#' + hs[i].id + '">' + hs[i].innerHTML.replace(/<[^>]*>/g, "") + '</a></li>');

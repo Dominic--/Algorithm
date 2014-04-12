@@ -1,7 +1,7 @@
 var monk = require('monk');
 var db = monk('localhost:27017/cpt');
 
-var doc = {"keyword" : "Algorithm, 算法", "description" : "包罗最全的计算机算法知识，从数据结构基础开始、介绍常用算法、深入理解。"};
+var doc = {"title" : "", "keyword" : "Algorithm, 算法", "description" : "包罗最全的计算机算法知识，从数据结构基础开始、介绍常用算法、深入理解。"};
 
 exports.remove = function(req, res){
     var url = req.param('url');
@@ -17,8 +17,23 @@ exports.view = function(req, res){
     var col = db.get('algorithm');
 
     col.findOne({"url":url}, {}, function(e, algorithm){
-        res.render('algorithm', {"doc" : algorithm});
+        if (algorithm) {
+            res.render('algorithm', {"doc" : algorithm});
+        } else {
+            res.redirect('/404');
+        }
     });
+};
+
+exports.search = function(req, res){
+    var query = req.body.query;
+    var col = db.get('algorithm');
+
+    col.find({"name": {$regex : ".*"+query+".*"}}, {fields:{url:1, name:1, _id:0}}, function(e, algorithms) {
+        console.log(algorithms);
+        res.render('search', {'algorithms':algorithms, 'doc':doc});
+    });
+
 };
 
 exports.edit = function(req, res){
@@ -34,7 +49,7 @@ exports.edit = function(req, res){
         col.update(
                 { "_id": body._id },
                 { 
-                    "name": body.name,
+                    "title": body.title,
                     "url": body.url,
                     "keyword": body.keyword,
                     "description": body.description,
@@ -49,7 +64,7 @@ exports.add = function(req, res){
         if (req.method == 'GET') {
             res.render('add', {"doc" : doc});
         } else {
-            var name = req.body.name;
+            var name = req.body.title;
             var url = req.body.url;
             var keyword = req.body.keyword;
             var description = req.body.description;
@@ -57,7 +72,7 @@ exports.add = function(req, res){
 
             var col = db.get('algorithm');
             col.insert({
-                "name" : name,
+                "title" : title,
                 "url" : url,
                 "keyword": keyword,
                 "description": description,

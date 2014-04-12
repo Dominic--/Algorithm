@@ -4,8 +4,8 @@ var algorithm = require('./controllers/algorithm');
 module.exports = function (app) {
 	// Site
     app.get('/', site.index);
-    app.get('/overview', site.overview);
-    app.get('/admin', site.auth, site.admin);
+    app.get('/sitemap', site.sitemap);
+    app.get('/sitemap.xml', site.sitemapxml);
 
     app.get('/login', site.login);
     app.get('/logout', site.logout);
@@ -15,6 +15,7 @@ module.exports = function (app) {
     // Algorithm
 
     // Guest will view the webpage by this way
+    app.get('/algorithm', site.algorithm);
     app.get('/algorithm/:url?', algorithm.view);
 
     // Admin Enterance
@@ -24,4 +25,9 @@ module.exports = function (app) {
 
     app.post('/add', site.auth, algorithm.add);
     app.post('/edit/:url?', site.auth, algorithm.edit);
+    app.post('/search', algorithm.search);
+    
+
+    //404
+    app.use(site.notfound);
 };

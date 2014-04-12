@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Algorithm.CC</title>
+        <title>
+            <% if (doc.title != "") { %>
+                <%= doc.title %>&nbsp;-&nbsp;
+            <% } %>
+            Algorithm.CC
+        </title>
         <meta name="Keywords" content="<%= doc.keyword %>">
         <meta name="Description" content="<%= doc.description %>">
         <meta charset="utf-8">
@@ -29,19 +34,20 @@
         <nav class="navbar navbar-static-top bs-docs-nav" role="banner" id="top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="algorithm.cc">
+                    <a class="navbar-brand" href="/">
                         Al<span style="color:green">go</span>rithm.<span style="color:green">CC</span>
                     </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="mailto:henglin1991@gmail.com">提意见</a></li>
+                        <li><a href="/algorithm">算法</a></li>
+                        <li><a href="/sitemap">地图</a></li>
                     </ul>
-                    <form class="navbar-form navbar-right">
+                    <form class="navbar-form navbar-right" method="post" action="/search">
                         <div class="input-group cpt-width-300">
-                            <input type="text" class="form-control" placeholder="Search Algorithm...">
+                            <input type="text" class="form-control" name="query" placeholder="Search Algorithm...">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
+                                <input class="btn btn-default" type="submit" value="Go!">
                             </span>
                         </div>
                     </form>

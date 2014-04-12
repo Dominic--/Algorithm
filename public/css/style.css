@@ -44,6 +44,27 @@ a {
     margin-bottom: 100px;
 }
 
+.cpt-middle {
+    text-align: center;
+    width: 410px;
+    margin: 20% auto;
+}
+
+.cpt-breadcrumb>li+li:before {
+    content: ">>";
+    padding: 15px 0px;
+    color: #ccc;
+    float: left;
+}
+
+.cpt-breadcrumb li a{
+    float: left;
+}
+
+.cpt-breadcrumb a:hover {
+    color: #999;
+}
+
 .array {
     padding: 20px 40px;
     border-collapse: collapse;

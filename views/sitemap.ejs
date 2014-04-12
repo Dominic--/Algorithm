@@ -1,0 +1,18 @@
+<%- include header %>
+<div class="content">
+    <h3>管理员入口</h3>
+    <ul>
+        <li><a href="/login">登陆</a></li>
+        <li><a href="/login">注销</a></li>
+        <li><a href="/add">添加</a></li>
+    </ul>
+    <h3>算法</h3>
+    <ul>
+        <li><a href="/algorithm">算法总览</a></li>
+
+        <% algorithms.forEach(function(a) { %>
+            <li><a href="/algorithm/<%= a.url %>">《<%= a.name %>》</a><% if (login) {%>: <a href="/edit/<%= a.url %>">编辑</a>, <a href="/remove/<%= a.url %>">删除</a><% }; %></li>
+        <% }); %>
+    </ul>
+</div>
+<%- include footer %>
