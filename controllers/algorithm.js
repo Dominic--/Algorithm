@@ -8,7 +8,7 @@ exports.remove = function(req, res){
     var col = db.get('algorithm');
 
     col.remove({"url":url}, {}, function(e, a){
-        res.redirect('/admin');
+        res.redirect('/sitemap');
     });
 };
 
@@ -29,7 +29,7 @@ exports.search = function(req, res){
     var query = req.body.query;
     var col = db.get('algorithm');
 
-    col.find({"name": {$regex : ".*"+query+".*"}}, {fields:{url:1, name:1, _id:0}}, function(e, algorithms) {
+    col.find({"title": {$regex : ".*"+query+".*"}}, {fields:{url:1, title:1, _id:0}}, function(e, algorithms) {
         console.log(algorithms);
         res.render('search', {'algorithms':algorithms, 'doc':doc});
     });
@@ -64,7 +64,7 @@ exports.add = function(req, res){
         if (req.method == 'GET') {
             res.render('add', {"doc" : doc});
         } else {
-            var name = req.body.title;
+            var title = req.body.title;
             var url = req.body.url;
             var keyword = req.body.keyword;
             var description = req.body.description;
@@ -79,7 +79,7 @@ exports.add = function(req, res){
                 "content" : content
             },function (err, doc) {
                 if (!err) {
-                    res.redirect("/admin");
+                    res.redirect("/sitemap");
                 }
             });
         }

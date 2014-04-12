@@ -40,7 +40,7 @@ exports.logout = function(req, res) {
 exports.algorithm = function(req, res) {
     var col = db.get('algorithm');
 
-    col.find({}, { fields:{url : 1, name : 1,  _id : 0} }, function(e, algorithms) {
+    col.find({}, { fields:{url : 1, title : 1,  _id : 0} }, function(e, algorithms) {
         res.render('algorithms', {'algorithms' : algorithms, 'doc' : doc});
     });
 };
@@ -51,7 +51,7 @@ exports.sitemap = function(req, res) {
     if (req.session.login == 'cpt')
         is_login = true;
 
-    col.find({}, { fields:{url : 1, name : 1,  _id : 0} }, function(e, algorithms) {
+    col.find({}, { fields:{url : 1, title : 1,  _id : 0} }, function(e, algorithms) {
         res.render('sitemap', {'algorithms' : algorithms, 'doc' : doc, 'login' : is_login});
     });
 };

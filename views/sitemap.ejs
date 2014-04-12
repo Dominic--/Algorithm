@@ -11,7 +11,7 @@
         <li><a href="/algorithm">算法总览</a></li>
 
         <% algorithms.forEach(function(a) { %>
-            <li><a href="/algorithm/<%= a.url %>">《<%= a.name %>》</a><% if (login) {%>: <a href="/edit/<%= a.url %>">编辑</a>, <a href="/remove/<%= a.url %>">删除</a><% }; %></li>
+            <li><a href="/algorithm/<%= a.url %>">《<%= a.title %>》</a><% if (login) {%>: <a href="/edit/<%= a.url %>">编辑</a>, <a href="/remove/<%= a.url %>">删除</a><% }; %></li>
         <% }); %>
     </ul>
 </div>

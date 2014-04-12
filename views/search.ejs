@@ -3,7 +3,7 @@
     <h3>搜索结果:</h3>
     <% if (algorithms.length > 0) { 
         algorithms.forEach(function(a) {%>
-            <a href="/algorithm/<%= a.url %>">《<%= a.name %>》</a><br />
+            <a href="/algorithm/<%= a.url %>">《<%= a.title %>》</a><br />
     <%  }); 
        } else {%>
         很遗憾没有你想要的东西<br />
